@@ -1,0 +1,105 @@
+/* 页面基础样式 */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* 爱心基础样式 - 重新设计 */
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    /* transform: rotate(-45deg); */
+    animation: heartFloat 2s ease-out forwards;
+    pointer-events: none;
+}
+
+/* 爱心形状 - 正确的实现方式 */
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 40px;
+    background: inherit;
+    border-radius: 26px 26px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart::before {
+    left: 26px;
+}
+
+.heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* 爱心颜色变体 */
+.heart1 { background: #ff6b6b; }
+.heart2 { background: #ff8e8e; }
+.heart3 { background: #ffa8a8; }
+.heart4 { background: #ff6b9d; }
+.heart5 { background: #c44569; }
+.heart6 { background: #f8b500; }
+.heart7 { background: #ff3838; }
+
+/* 爱心飘动动画 */
+@keyframes heartFloat {
+    0% {
+        opacity: 1;
+        transform:translatex(-25px) scale(0);
+        transform:translateY(0px) scale(0);
+    }
+    10% {
+        transform: translateY(-10px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(0.3);
+    }
+}
+
+/* 点击波纹效果 */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
